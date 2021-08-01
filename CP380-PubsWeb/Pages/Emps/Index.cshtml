@@ -1,0 +1,48 @@
+﻿@page
+@model CP380_PubsWeb.Pages.Emps.IndexModel
+@{
+}
+<div class="row">
+    <div class="col-11 text-center">
+        <h2 class="text-success">Employees List</h2>
+    </div>
+    <div class="col-1 text-right">
+        <a class="btn btn-success text-white" asp-page="/Jobs/Index">
+            <span class="material-icons">
+                undo
+            </span>
+        </a>
+    </div>
+    <div class="col-12">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Employee ID</th>
+                    <th scope="col">Employee Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.EmpList.Count() == 0)
+                {
+                    <tr>
+                        <td colspan="2" class="text-info text-center">
+                            Oops... No employee found!
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var item in Model.EmpList)
+                    {
+                        <tr>
+                            <th scope="row">@Html.DisplayFor(m => item.emp_id)</th>
+                            <td>
+                                @Html.DisplayFor(m => item.fname)&nbsp;@Html.DisplayFor(m => item.lname)
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
